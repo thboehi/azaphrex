@@ -1,0 +1,227 @@
+@font-face {
+    font-family: "Krungthep";
+    src: url('./assets/fonts/krungthep.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --animation-time: 4s;
+    --animation-delay: 300ms;
+    --orange: rgb(255, 54, 0);
+}
+
+body{
+    background-color: black;
+    box-sizing: border-box;
+    font-family: "Krungthep";
+    color: white;
+}
+
+strong{
+    color: var(--orange);
+}
+
+.background{
+    position: absolute;
+    top: 0px; left: 50%;
+    height: 750px;
+    transform: translate(-50%, 0);
+    z-index: -1;
+}
+
+.hero{
+    position: relative;
+    padding-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+.hero > .artists{
+    width: 700px;
+}
+.hero > .artists-long{
+    display: none;
+}
+
+.hero > .title, .effect{
+    position: absolute;
+    top: 65%; left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.hero > .title{
+    fill: transparent;
+    stroke: var(--orange);
+    stroke-width: 2;
+    stroke-dasharray: 1250;
+    stroke-dashoffset: 1250;
+    filter: drop-shadow( 0px 0px 10px rgba(0, 0, 0, 1));
+    animation: textAnimation var(--animation-time) ease-out forwards var(--animation-delay);
+    width: 400px;
+    z-index: 9;
+}
+
+.hero > .effect {
+    height: 279px;
+    opacity: 0;
+    animation: effectAnimation var(--animation-time) ease-out forwards var(--animation-delay);
+    z-index: 10;
+
+}
+
+.about-container, .artists-container, .banner-ytb-container{
+    max-width: 680px;
+    margin: 20px auto;
+    padding: 20px;
+}
+.about-container > p{
+    text-align: justify;
+    word-break: normal;
+}
+
+.banner-ytb-container{
+    margin: 60px auto;
+}
+.banner-ytb-container > img {
+    width: 100%;
+}
+
+.artists-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;
+}
+
+.artist{
+    /* position: relative;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px; */
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.artist:nth-of-type(2){
+    /* grid-template-columns: 2fr 1fr; */
+    flex-direction: row-reverse;
+}
+
+.artist-name{
+    color: var(--orange);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.artist-name-desc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.and-reverse{
+    align-items: flex-end;
+}
+
+.artist-desc{
+    text-align: justify;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+.artist-img {
+    height: 170px;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+}
+
+@media screen and (max-width: 650px) {
+    .artist{
+        flex-direction: column;
+    }
+    .artist:nth-of-type(2){
+        flex-direction: column;
+    }
+    .artist-img{
+        width: 100%;
+        height: auto;
+    }
+    .artist-name-desc{
+        margin-top: -50px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .hero{
+        padding-top: unset;
+        height: 100vh;
+        height: 100dvh;
+    }
+    .hero > .artists{
+        display: none;
+    }
+    .hero > .artists-long{
+        display: block;
+        width: 130%;
+        mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+    }
+    .hero > .title, .effect{
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .hero > .title{
+        width: 90%;
+    }
+    .hero > .effect{
+        height: auto;
+        width: 170%;
+    }
+    
+}
+
+@keyframes textAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(1.5);
+        stroke-dashoffset: 1250;
+    }
+    30% {
+        fill: transparent;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        fill: var(--orange);
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes effectAnimation {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes apparition {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
