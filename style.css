@@ -139,6 +139,8 @@ strong{
     /* opacity: 0.7;
     filter: brightness(100);
     z-index: 10; */
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #000);
 }
 
 .artists-container{
@@ -201,7 +203,7 @@ strong{
 
 .ytb-title{
     text-align: center;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-size: 2rem;
     color: var(--orange);
     margin: 20px;
@@ -225,7 +227,7 @@ strong{
     aspect-ratio: 16/9.047;
     /* border: transparent 3px solid; */
     mask-image: url(./assets/svg/logo.svg);
-    mask-size: 70%;
+    mask-size: 78%;
     mask-repeat: no-repeat;
     mask-position: 50% 50%;
     mask-mode: alpha;
