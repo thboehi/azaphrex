@@ -67,7 +67,7 @@ strong{
 .hero > .artists{
     width: 700px;
 }
-.hero > .artists-long{
+.hero > .artists-long, .artists-long-black{
     display: none;
 }
 
@@ -115,9 +115,26 @@ strong{
     word-break: normal;
 }
 
+.banner-ytb-container{
+    position: relative;
+}
 .banner-ytb-container > img {
     width: 100%;
 }
+
+
+.banner-ytb-container > .banner-ytb-single {
+    /* animation: stab 900ms infinite; */
+    position: absolute;
+    top: 50%; left: 47.3%;
+    translate: -50% -50%;
+    height: 80.5%;
+    width: auto;
+    box-sizing: border-box;
+    opacity: 0;
+}
+
+
 
 .artists-container{
     display: grid;
@@ -259,6 +276,12 @@ strong{
         width: 130%;
         mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
     }
+    .hero > .artists-long-black{
+        display: block;
+        position: absolute;
+        width: 130%;
+        filter: brightness(0);
+    }
     .hero > .title, .effect{
         position: absolute;
         top: 50%; left: 50%;
@@ -317,4 +340,66 @@ strong{
     100%{
         opacity: 1;
     }
+}
+
+@keyframes flash {
+    0% {
+        filter: brightness(1);
+    }
+    25% {
+        filter: brightness(2);
+    }
+    50% {
+        filter: brightness(0.8);
+    }
+    75% {
+        filter: brightness(2.5);
+    }
+    100% {
+        filter: brightness(1);
+    }
+}
+
+@keyframes stab {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    10%{
+        transform: scale(1.3) rotate(30deg);
+        filter: brightness(1);
+    }
+    15%{
+        transform: scale(1.6) rotate(28deg);
+        filter: brightness(1.2);
+    }
+    20%{
+        transform: scale(1.8) rotate(32deg);
+        filter: brightness(1.4);
+    }
+    25%{
+        transform: scale(1.8) rotate(26deg);
+        filter: brightness(0.7);
+    }
+    30%{
+        transform: scale(1.6) rotate(24deg);
+        filter: brightness(1.2);
+    }
+    35%{
+        transform: scale(1.6) rotate(10deg);
+        filter: brightness(1.2);
+    }
+    40%{
+        transform: scale(1.6) rotate(-10deg);
+        filter: brightness(1);
+    }
+    99%{
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+        opacity: 0;
+    }
+    
 }
