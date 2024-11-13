@@ -1,19 +1,25 @@
 let bg = document.getElementById("background")
 let text = document.getElementById("title")
 let effect = document.getElementById("effect")
-let sub = document.getElementById("hero-sub")
+// let sub = document.getElementById("hero-sub")
 let stab_head = document.getElementById("banner-ytb-single")
+let iframe = document.getElementById("ytb-iframe")
 
 window.addEventListener('scroll', () => {
     let value = window.scrollY
 
+    if (value < 1390 || value > 1850) {
+        iframe.classList.remove("iframe-visible")
+    } else {
+        iframe.classList.add("iframe-visible")
+    }
+    
     bg.style.marginTop = value * 0.3 + "px"
     text.style.marginTop = value * -0.4 + "px"
     effect.style.marginTop = value * -0.4 + "px"
-    sub.style.marginBottom = value * 0.2 + "px"
-    sub.style.opacity = 1 - (value / 500)
+    // sub.style.marginBottom = value * 0.2 + "px"
+    // sub.style.opacity = 1 - (value / 500)
 })
-
 
 let animateStab = (element) => {
     element.animate([
@@ -117,12 +123,13 @@ window.onkeydown = function(e) {
     
 }
 
-let iframe = document.getElementById("ytb-iframe")
+let iframeElement = document.getElementById("ytb-iframe")
 let maskConfig = (element) => {
-    iframe.classList.toggle("nomask")
-    if (iframe.classList.contains("nomask")) {
+    iframeElement.classList.toggle("nomask")
+    if (iframeElement.classList.contains("nomask")) {
         element.innerText = "Afficher le masque"
     } else {
         element.innerText = "Retirer le masque"
     }
 }
+
