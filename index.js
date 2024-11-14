@@ -122,3 +122,7 @@ window.onkeydown = function(e) {
     }
     
 }
+
+tippy('.insta-link', {
+    content: 'Vers la page instagram',
+  });

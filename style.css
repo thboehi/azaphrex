@@ -105,7 +105,7 @@ strong{
 
 }
 
-.about-container, .artists-container, .banner-ytb-container, .cards-container, .contact-container{
+.about-container, .artists-container, .banner-ytb-container, .cards-container, .contact-container, .credits-container{
     max-width: 680px;
     margin: 100px auto;
     padding: 0px 20px;
@@ -167,7 +167,6 @@ strong{
 .artist-name{
     color: var(--orange);
     font-size: 2rem;
-    margin-bottom: 10px;
 }
 
 .artist-name-desc{
@@ -177,6 +176,33 @@ strong{
 }
 .and-reverse{
     align-items: flex-end;
+}
+
+.artist-name-desc .name-link{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.and-reverse .name-link{
+    flex-direction: row-reverse;
+}
+.name-link a{
+    height: 25px;
+    padding: 20px;
+    margin: -20px;
+}
+.name-link img {
+    width: 25px;
+    height: auto;
+    aspect-ratio: 1;
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+}
+
+.name-link img:hover{
+    opacity: 1;
 }
 
 .artist-desc{
@@ -284,14 +310,16 @@ strong{
     justify-content: center;
     gap: 20px;
 }
-.contact-container a {
+.contact-container a, .credits-container a{
+    padding: 20px;
+    margin: -20px;
     color: var(--orange);
     -webkit-text-decoration: underline transparent 2px;
     text-decoration: underline transparent 2px;
     text-underline-offset: -3px;
     transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, letter-spacing 300ms ease-in-out, border-bottom 300ms ease-in-out, text-decoration 300ms ease-in-out, text-underline-offset 300ms ease-in-out, -webkit-text-decoration 300ms ease-in-out;
 }
-.contact-container a:hover {
+.contact-container a:hover, .credits-container a:hover{
     opacity: 1;
     -webkit-text-decoration: underline var(--orange) 2px;
     text-decoration: underline var(--orange) 2px;
@@ -305,6 +333,23 @@ strong{
     gap: 20px;
 }
 
+.credits-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0.3;
+    transition: opacity 300ms ease-in-out;
+}
+
+.credits-container:hover{
+    opacity: 1;
+}
+.credits-container > p{
+    font-size: 0.7rem;
+}
+
 @media screen and (max-width: 650px) {
     .artist{
         flex-direction: column;
@@ -313,11 +358,15 @@ strong{
         flex-direction: column;
     }
     .artist-img{
+        z-index: -1;
         width: 100%;
         height: auto;
     }
     .artist-name-desc{
-        margin-top: -50px;
+        margin-top: -100px;
+    }
+    .name-link img {
+        opacity: 1;
     }
     .youtube-video-container{
         padding: 0px 20px;
