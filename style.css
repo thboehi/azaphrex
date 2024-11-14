@@ -14,25 +14,33 @@
     --orange: #ff3600;
     --orange-darker: #cc2b00;
 }
-/* width */
+
 ::-webkit-scrollbar {
     width: 15px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     background: #000;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: var(--orange);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: var(--orange-darker);
+}
+.tippy-box[data-theme~='azaphrex'] {
+    background-color: var(--orange);
+    color: black;
+}
+.tippy-box[data-theme~='azaphrex'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: var(--orange);
   }
+
 
 body{
     background-color: black;
@@ -67,7 +75,7 @@ strong{
 .hero > .artists{
     width: 700px;
 }
-.hero > .artists-long, .artists-long-black{
+.hero > .artists-long, .artists-long-black, .artists-long-particles{
     display: none;
 }
 
@@ -164,6 +172,23 @@ strong{
     flex-direction: row-reverse;
 }
 
+.artist-img-links{
+    position: relative;
+}
+
+.artist-img-links > .artist-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    position: absolute;
+    bottom: 0; left: 0;
+}
+.artist-img-links > .artist-links > a > img{
+    width: 30px;
+}
+
 .artist-name{
     color: var(--orange);
     font-size: 2rem;
@@ -176,33 +201,6 @@ strong{
 }
 .and-reverse{
     align-items: flex-end;
-}
-
-.artist-name-desc .name-link{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-}
-
-.and-reverse .name-link{
-    flex-direction: row-reverse;
-}
-.name-link a{
-    height: 25px;
-    padding: 20px;
-    margin: -20px;
-}
-.name-link img {
-    width: 25px;
-    height: auto;
-    aspect-ratio: 1;
-    opacity: 0.5;
-    transition: opacity 300ms ease-in-out;
-}
-
-.name-link img:hover{
-    opacity: 1;
 }
 
 .artist-desc{
@@ -218,6 +216,11 @@ strong{
 .artist-img {
     height: 170px;
     mask-image: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+}
+
+.soundcloud-container > p{
+    color: var(--orange);
+    margin-bottom: 10px;
 }
 .youtube-video-container{
     position: relative;
@@ -351,6 +354,9 @@ strong{
 }
 
 @media screen and (max-width: 650px) {
+    .artists-container{
+        grid-template-rows: 2fr 0.5fr 2fr;
+    }
     .artist{
         flex-direction: column;
     }
@@ -358,15 +364,34 @@ strong{
         flex-direction: column;
     }
     .artist-img{
+        display: block;
+        position: relative;
         z-index: -1;
         width: 100%;
         height: auto;
     }
+    .artist-img-links > .artist-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 15px;
+        width: 100%;
+        position: absolute;
+        bottom: 90px; left: 0;
+    }
+    .artist-img-links > .artist-links.al-reverse {
+        justify-content: flex-end;
+        align-items: flex-end;
+        left: unset;
+        right: 0px;
+    }
+    
+    .artist-img-links > .artist-links > a > img{
+        width: 30px;
+    }
     .artist-name-desc{
         margin-top: -100px;
-    }
-    .name-link img {
-        opacity: 1;
     }
     .youtube-video-container{
         padding: 0px 20px;
@@ -406,6 +431,12 @@ strong{
         position: absolute;
         width: 130%;
         filter: brightness(0);
+    }
+    .hero > .artists-long-particles{
+        display: block;
+        position: absolute;
+        width: 130%;
+        opacity: 0.5;
     }
     .hero > .title, .effect{
         position: absolute;

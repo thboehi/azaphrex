@@ -2,8 +2,10 @@ let bg = document.getElementById("background")
 let text = document.getElementById("title")
 let effect = document.getElementById("effect")
 // let sub = document.getElementById("hero-sub")
+let particles = document.getElementById("artists-long-particles")
 let stab_head = document.getElementById("banner-ytb-single")
 let iframe = document.getElementById("ytb-iframe")
+
 
 window.addEventListener('scroll', () => {
     let value = window.scrollY
@@ -17,6 +19,7 @@ window.addEventListener('scroll', () => {
     bg.style.marginTop = value * 0.3 + "px"
     text.style.marginTop = value * -0.4 + "px"
     effect.style.marginTop = value * -0.4 + "px"
+    particles.style.marginTop = value * 0.2 + "px"
     // sub.style.marginBottom = value * 0.2 + "px"
     // sub.style.opacity = 1 - (value / 500)
 })
@@ -123,6 +126,12 @@ window.onkeydown = function(e) {
     
 }
 
-tippy('.insta-link', {
-    content: 'Vers la page instagram',
-  });
+
+tippy('.artist-link', {
+    content(reference) {
+        const img = reference.querySelector('img');
+        return img ? img.alt : '#';
+    },
+allowHTML: true,
+theme: "azaphrex"
+});
