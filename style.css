@@ -311,8 +311,8 @@ strong{
     gap: 20px;
 }
 .contact-container a, .credits-container a{
-    padding: 20px;
-    margin: -20px;
+    padding: 15px;
+    margin: -15px;
     color: var(--orange);
     -webkit-text-decoration: underline transparent 2px;
     text-decoration: underline transparent 2px;
@@ -339,7 +339,7 @@ strong{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    opacity: 0.3;
+    opacity: 0.5;
     transition: opacity 300ms ease-in-out;
 }
 
