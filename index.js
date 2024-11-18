@@ -10,11 +10,6 @@ let iframe = document.getElementById("ytb-iframe")
 window.addEventListener('scroll', () => {
     let value = window.scrollY
 
-    if (value < 1390 || value > 1850) {
-        iframe.classList.remove("iframe-visible")
-    } else {
-        iframe.classList.add("iframe-visible")
-    }
     
     bg.style.marginTop = value * 0.3 + "px"
     text.style.marginTop = value * -0.4 + "px"
@@ -23,6 +18,25 @@ window.addEventListener('scroll', () => {
     // sub.style.marginBottom = value * 0.2 + "px"
     // sub.style.opacity = 1 - (value / 500)
 })
+
+// Crée un observateur
+let observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            // Si l'élément est visible, ajoute la classe
+            iframe.classList.add("iframe-visible");
+        } else {
+            // Sinon, retire la classe
+            iframe.classList.remove("iframe-visible");
+        }
+    });
+}, {
+    root: null, // Observe par rapport à la fenêtre visible (viewport)
+    threshold: 1 // Détecte si au moins 10% de l'iframe est visible
+});
+
+// Observe l'élément iframe
+observer.observe(iframe);
 
 let animateStab = (element) => {
     element.animate([
