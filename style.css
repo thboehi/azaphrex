@@ -371,6 +371,7 @@ strong{
     margin-bottom: 10px;
     box-sizing: border-box;
     outline: none;
+    border-radius: 0;
 }
 #mce-EMAIL::placeholder{
     color: black;
@@ -390,6 +391,7 @@ strong{
     transition: background 300ms ease-in-out;
     font-family: "Krungthep";
     color: black;
+    border-radius: 0;
 }
 #mc-embedded-subscribe:hover{
     background: var(--orange-darker);
