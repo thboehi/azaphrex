@@ -113,7 +113,7 @@ strong{
 
 }
 
-.about-container, .artists-container, .banner-ytb-container, .cards-container, .contact-container, .credits-container{
+.about-container, .artists-container, .banner-ytb-container, .cards-container, .contact-container, .credits-container, .mailinglist-container{
     max-width: 680px;
     margin: 100px auto;
     padding: 0px 20px;
