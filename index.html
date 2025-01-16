@@ -6,7 +6,8 @@
         <title>Azaph & Christus Rex</title>
         <meta name="description" content="Azaph et Christus Rex, duo de DJs et producteurs suisses passionnés de bass music, privilégient la Drum and Bass, tout en sachant aussi performer dans la house et la techno. Inspirés par les mouvements britanniques et américains, ils apportent une énergie nouvelle au public suisse avec des performances puissantes et immersives.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./style.css?v1.2.0">
+        <link rel="stylesheet" href="./style.css?v2.0.0">
+        <!-- Version 2.0.0 added the newsletter section -->
         <link rel="icon" type="image/x-icon" href="./assets/svg/logo.svg">
 
         <!-- UMAMI Reports -->
@@ -152,15 +153,17 @@
             <a href="mailto:contact@drumnbass.ch">contact@drumnbass.ch</a>
         </section>
 
-        <!--
         <section class="mailinglist-container">
+            <p class="newsletter-title">Newsletter</p>
             <div id="mc_embed_shell">
-  
                 <div id="mc_embed_signup">
                     <form action="https://drumnbass.us11.list-manage.com/subscribe/post?u=5a6a8b5236e1a8c444d3ee19f&amp;id=2ae2b979fd&amp;f_id=00a60ee1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
                         <div id="mc_embed_signup_scroll">
-                            <div class="indicates-required"><span class="asterisk">*</span> indique "obligatoire"</div>
-                            <div class="mc-field-group"><label for="mce-EMAIL">Adresse e-mail <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+                            <!-- <div class="indicates-required"><span class="asterisk">*</span> indique "obligatoire"</div> -->
+                            <div class="mc-field-group">
+                                <!-- <label for="mce-EMAIL">Adresse e-mail <span class="asterisk">*</span></label> -->
+                                <input type="email" name="EMAIL" class="required email" placeholder="Adresse mail" id="mce-EMAIL" required="" value="">
+                            </div>
                 <div hidden=""><input type="hidden" name="tags" value="8146523"></div>
                         <div id="mce-responses" class="clear foot">
                             <div class="response" id="mce-error-response" style="display: none;"></div>
@@ -172,7 +175,7 @@
                     </div>
                         <div class="optionalParent">
                             <div class="clear foot">
-                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="S'abonner" data-umami-event="Newsletter suscribed">
                             </div>
                         </div>
                     </div>
@@ -181,8 +184,6 @@
                 </div>                
           
         </section>
-        
-        -->
 
         <section class="credits-container">
             <p>Site web réalisé par <a href="https://thbo.ch/" target="_blank">thbo.ch</a></p>
