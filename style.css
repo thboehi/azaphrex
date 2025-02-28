@@ -155,6 +155,9 @@ strong{
     max-width: 680px;
     margin: 0px auto;
     padding: 100px 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #response-message{
@@ -163,6 +166,17 @@ strong{
     margin-bottom: 20px;
     width: 100%;
     padding: 20px 0px;
+}
+
+.form-container > .form-img-container{
+    width: 100%;
+    max-width: 450px;
+    margin-bottom: 40px;
+}
+
+.form-container > .form-img-container > img{
+    width: 100%;
+    height: auto;
 }
 
 .form-container > .form-title {

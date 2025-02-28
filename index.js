@@ -14,7 +14,7 @@ window.addEventListener('scroll', () => {
     bg.style.marginTop = value * 0.3 + "px"
     text.style.marginTop = value * -0.4 + "px"
     effect.style.marginTop = value * -0.4 + "px"
-    particles.style.marginTop = value * 0.2 + "px"
+    // particles.style.marginTop = value * 0.2 + "px"
     // sub.style.marginBottom = value * 0.2 + "px"
     // sub.style.opacity = 1 - (value / 500)
 })
