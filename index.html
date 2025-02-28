@@ -6,13 +6,13 @@
         <title>Azaph & Christus Rex</title>
         <meta name="description" content="Azaph et Christus Rex, duo de DJs et producteurs suisses passionnés de bass music, privilégient la Drum and Bass, tout en sachant aussi performer dans la house et la techno. Inspirés par les mouvements britanniques et américains, ils apportent une énergie nouvelle au public suisse avec des performances puissantes et immersives.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./style.css?v2.0.1">
+        <link rel="stylesheet" href="./style.css?v=2.1.1">
         <!-- Version 2.0.0 added the newsletter section -->
         <!-- Version 2.0.1 fixed border-radius in newsletter on Safari iOS -->
         <link rel="icon" type="image/x-icon" href="./assets/svg/logo.svg">
 
-        <!-- UMAMI Reports -->
-        <script defer src="https://umami.thbo.synology.me/script.js" data-website-id="b9f7d324-e005-44fe-81dd-c2272d7e04c8"></script>
+        <!-- UMAMI Reports (désactivé pour le moment)-->
+        <!-- <script defer src="https://umami.thbo.synology.me/script.js" data-website-id="b9f7d324-e005-44fe-81dd-c2272d7e04c8"></script> -->
 
         <!-- Socials -->
         <meta content="Azaph & Christus Rex" property="og:title">
@@ -69,6 +69,22 @@
         <section class="banner-ytb-container" id="ep">
             <img class="banner-ytb-bg" src="./assets/img/black_statues.png" alt="Bannière youtube pour le prochain EP.">
             <img class="banner-ytb-single" id="banner-ytb-single" src="./assets/img/black_statues_single.png" alt="Bannière youtube pour le prochain EP.">
+        </section>
+
+        <!-- <section class="form-iframe">
+            <iframe src="https://n8n.thbo.synology.me/form/48f92df2-26c2-43c6-905e-382114a6c582" frameborder="0"></iframe>
+        </section> -->
+
+        <section class="form-container">
+            <h2 class="form-title">Inscription Guest List - DnB Takeover</h2>
+            <p class="form-subtitle">14 Mars 2025 - Globull</p>
+            <form id="form">
+                <input type="text" name="firstname" id="firstname" placeholder="Prénom" required>
+                <input type="text" name="lastname" id="lastname" placeholder="Nom" required>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <button type="submit" class="button">Submit</button>
+            </form>
+            <p id="response-message"></p> <!-- Message de confirmation -->
         </section>
 
         <section class="artists-container">
@@ -134,7 +150,7 @@
         </section>
 
         <section class="youtube-video-container" id="video">
-            <p class="ytb-title">Dernier mix</p>
+            <h2 class="ytb-title">Dernier mix</h2>
             <iframe id="ytb-iframe" src="https://www.youtube.com/embed/szkc5rt3e1A?vq=hd1080&autoplay=1&mute=1&loop=1&modestbranding=1&rel=0&color=white&controls=1&playlist=szkc5rt3e1A&cc_load_policy=0" width="100%" title="DRUM AND BASS MIX | Les Paccots, Switzerland (AZAPH & Christus Rex)" frameborder="0" allowfullscreen></iframe>
             <img src="./assets/img/image_site_2.webp" alt="Fond style usine abandonnée" class="background" id="background-ytb">
 
@@ -200,8 +216,56 @@
 
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
-        <script src="./index.js?v=1.2.0"></script>
+        <script src="./index.js?v=2.1.1"></script>
         <script src="https://thbo.ch/credits.js"></script>
+        <!-- <script>
+            (function(d,t) {
+              var BASE_URL="https://chatwoot.thbo.synology.me";
+              var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+              g.src=BASE_URL+"/packs/js/sdk.js";
+              g.defer = true;
+              g.async = true;
+              s.parentNode.insertBefore(g,s);
+              g.onload=function(){
+                window.chatwootSDK.run({
+                  websiteToken: 'NUt2NyUgpHPsEVjjML3Zw46s',
+                  baseUrl: BASE_URL
+                })
+              }
+            })(document,"script");
+          </script> -->
+
+    <script>
+        const formLink = "https://n8n.thbo.synology.me/webhook-test/b3c2277a-4265-4082-a8dc-55656fa6be6c";
+
+        document.getElementById("form").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Empêche la redirection
+
+            const formData = new FormData(this);
+            const submitButton = this.querySelector("button[type='submit']");
+            submitButton.disabled = true;
+
+            try {
+                const response = await fetch(formLink, {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    document.getElementById("response-message").innerText = "Formulaire envoyé avec succès ! \n\n Merci pour votre intérêt, vous devriez recevoir un email avec votre entrée d'ici 5 minutes maximum.\n\n Dans le cas contraire, contactez-nous contact@drumnbass.ch rapidement.";
+                    this.setAttribute("data-sent", "true");
+                } else {
+                    document.getElementById("response-message").innerText = "Erreur lors de l'envoi.";
+                    submitButton.disabled = false;
+                }
+            } catch (error) {
+                document.getElementById("response-message").innerText = "Une erreur s'est produite.";
+                submitButton.disabled = false;
+            }
+        });
+
+    </script>
+          
 
     </body>
 </html>
