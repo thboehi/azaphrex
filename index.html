@@ -278,48 +278,6 @@
                 document.getElementById("form-place-restantes").innerText = `Places gratuites restantes ≃ ${data.remainingInvitations}`;
             });
     </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            function isIOS() {
-                return /iPhone|iPad|iPod/.test(navigator.userAgent);
-            }
-
-            if (isIOS()) {
-                if (typeof DeviceMotionEvent !== "undefined" && typeof DeviceMotionEvent.requestPermission === "function") {
-                    // Création du bouton pour demander l'accès
-                    const button = document.createElement("button");
-                    button.innerText = "Activer le gyroscope";
-                    button.style.position = "fixed";
-                    button.style.top = "50%";
-                    button.style.left = "50%";
-                    button.style.transform = "translate(-50%, -50%)";
-                    button.style.padding = "10px 20px";
-                    button.style.background = "red";
-                    button.style.color = "white";
-                    button.style.border = "none";
-                    button.style.fontSize = "16px";
-                    button.style.cursor = "pointer";
-                    button.style.zIndex = "1000";
-
-                    document.body.appendChild(button);
-
-                    button.addEventListener("click", function () {
-                        DeviceMotionEvent.requestPermission()
-                            .then(permissionState => {
-                                if (permissionState === "granted") {
-                                    console.log("Gyroscope activé !");
-                                } else {
-                                    alert("Accès au gyroscope refusé.");
-                                }
-                                button.remove(); // Supprime le bouton après la réponse
-                            })
-                            .catch(console.error);
-                    });
-                }
-            }
-        });
-    </script>
           
 
     </body>
