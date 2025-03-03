@@ -80,13 +80,13 @@
             <div class="form-img-container"data-tilt data-tilt-glare="true" data-tilt-max-glare="0.1" data-tilt-speed="3200" data-tilt-max="4" data-tilt-gyroscope="true">
                 <img src="./assets/img/dnb_takeover.jpeg" alt="Affiche de la soirée DNB Takeover à Globull" class="form-img">
             </div>
-            <p class="form-subtitle">Inscription gratuite</p>
-            <!-- <p class="form-subtitle">Place restante: ≃ 53</p> -->
+            <p class="form-subtitle" id="form-place-restantes">Places gratuites restantes ≃ ...</p>
+            
             <form id="form">
                 <input type="text" name="firstname" id="firstname" placeholder="Prénom" required>
                 <input type="text" name="lastname" id="lastname" placeholder="Nom" required>
                 <input type="email" name="email" id="email" placeholder="Email" required>
-                <button type="submit" class="button">Submit</button>
+                <button type="submit" class="button">Inscription</button>
             </form>
             <p id="response-message"></p> <!-- Message de confirmation -->
         </section>
@@ -271,6 +271,15 @@
             }
         });
 
+    </script>
+
+    <script>
+        //Contacter l'API https://n8n.thbo.synology.me/webhook/2f74789c-a392-4e23-8082-1386a81644be et remplacer #form-place-restantes par le nombre de places restantes qui sera retourné par l'api tel que: {"remainingInvitations":67}
+        fetch("https://n8n.thbo.synology.me/webhook/2f74789c-a392-4e23-8082-1386a81644be")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("form-place-restantes").innerText = `Places gratuites restantes ≃ ${data.remainingInvitations}`;
+            });
     </script>
           
 
