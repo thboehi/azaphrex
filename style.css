@@ -171,7 +171,7 @@ strong{
 .form-container > .form-img-container{
     width: 100%;
     max-width: 450px;
-    margin-bottom: 40px;
+    margin: 80px;
 }
 
 .form-container > .form-img-container > img{
@@ -179,18 +179,28 @@ strong{
     height: auto;
 }
 
-.form-container > .form-title {
+.form-title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.form-container .form-title {
     text-align: center;
     font-size: 2rem;
     color: var(--orange);
-    margin-bottom: 20px;
 }
 
-.form-container > .form-subtitle {
+.form-container .form-subtitle {
     text-align: center;
     font-size: 1rem;
     color: var(--orange);
     margin-bottom: 20px;
+    text-transform: uppercase;
+}
+#form-place-restantes{
+    margin-bottom: 40px;
 }
 
 .form-container form{
@@ -198,7 +208,7 @@ strong{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     margin: 0px auto;
     max-height: 300px;
     overflow: hidden;
@@ -232,7 +242,7 @@ strong{
     border: none;
     width: 100%;
     box-sizing: border-box;
-    padding: 8px;
+    padding: 12px 8px;
     cursor: pointer;
     transition: background 300ms ease-in-out;
     font-family: "Krungthep";
@@ -495,6 +505,9 @@ strong{
 }
 
 @media screen and (max-width: 650px) {
+    .form-container > .form-img-container{
+        margin: 20px;
+    }
     .artists-container{
         grid-template-rows: 2fr 0.5fr 2fr;
     }

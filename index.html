@@ -70,7 +70,10 @@
         </section>
 
         <section class="form-container" id="guest-list">
-            <h2 class="form-title">Guest List (max 100 pers.)</h2>
+            <div class="form-title-container">
+                <h2 class="form-title">Guest List </h2>
+                <p class="form-subtitle">100 places maximum</p>
+            </div>
             <div class="form-img-container"data-tilt data-tilt-glare="true" data-tilt-max-glare="0.1" data-tilt-speed="3200" data-tilt-max="4" data-tilt-gyroscope="true">
                 <img src="./assets/img/dnb_takeover.jpeg" alt="Affiche de la soirée DNB Takeover à Globull" class="form-img">
             </div>
@@ -274,6 +277,35 @@
             .then(data => {
                 document.getElementById("form-place-restantes").innerText = `Places gratuites restantes ≃ ${data.remainingInvitations}`;
             });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function isIOS() {
+                return /iPhone|iPad|iPod/.test(navigator.userAgent);
+            }
+
+            if (isIOS()) {
+                if (typeof DeviceMotionEvent !== "undefined" && typeof DeviceMotionEvent.requestPermission === "function") {
+                    // Demander l'autorisation
+                    const askPermission = confirm("Ce site utilise le gyroscope pour une meilleure expérience. Voulez-vous l'activer ?");
+                    
+                    if (askPermission) {
+                        DeviceMotionEvent.requestPermission()
+                            .then(permissionState => {
+                                if (permissionState === "granted") {
+                                    console.log("Gyroscope activé !");
+                                } else {
+                                    alert("Accès au gyroscope refusé.");
+                                }
+                            })
+                            .catch(console.error);
+                    }
+                } else {
+                    console.warn("Le gyroscope n'est pas disponible ou ne nécessite pas d'autorisation.");
+                }
+            }
+        });
     </script>
           
 
