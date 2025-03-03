@@ -256,7 +256,7 @@
                 });
 
                 if (response.ok) {
-                    document.getElementById("response-message").innerText = "Formulaire envoyé avec succès !\n\nMerci pour ton intérêt ! On a un nombre de places limité, donc on fera de notre mieux pour te réserver une invitation.\n\nSi tu es sélectionné(e), tu recevras un email avec ton invitation.\n\nCe processus peut prendre jusqu’à 24h, un peu de patience !\n\nÀ très vite !";
+                    document.getElementById("response-message").innerText = "Formulaire envoyé avec succès !\n\nMerci pour ton intérêt ! On a un nombre de places limité, donc on fera de notre mieux pour te réserver une invitation.\n\nSi tu es sélectionné(e), tu recevras un email avec ton invitation. Penses à vérifier tes indésirables.\n\nCe processus peut prendre jusqu’à 24h, un peu de patience !\n\nÀ très vite !";
                     this.setAttribute("data-sent", "true");
                 } else {
                     document.getElementById("response-message").innerText = "Erreur lors de l'envoi.";
