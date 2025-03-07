@@ -6,9 +6,7 @@
         <title>Azaph & Christus Rex</title>
         <meta name="description" content="Azaph et Christus Rex, duo de DJs et producteurs suisses passionnés de bass music, privilégient la Drum and Bass, tout en sachant aussi performer dans la house et la techno. Inspirés par les mouvements britanniques et américains, ils apportent une énergie nouvelle au public suisse avec des performances puissantes et immersives.">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" href="./style.css?v=2.1.3">
-        <!-- Version 2.0.0 added the newsletter section -->
-        <!-- Version 2.0.1 fixed border-radius in newsletter on Safari iOS -->
+        <link rel="stylesheet" href="./style.css?v=2.1.5">
         <link rel="icon" type="image/x-icon" href="./assets/svg/logo.svg">
 
         <!-- UMAMI Reports (désactivé pour le moment)-->
@@ -71,22 +69,21 @@
             <img class="banner-ytb-single" id="banner-ytb-single" src="./assets/img/black_statues_single.png" alt="Bannière youtube pour le prochain EP.">
         </section>
 
-        <!-- <section class="form-iframe">
-            <iframe src="https://n8n.thbo.synology.me/form/48f92df2-26c2-43c6-905e-382114a6c582" frameborder="0"></iframe>
-        </section> -->
-
-        <section class="form-container">
-            <h2 class="form-title">Guest List (max 100 pers.)</h2>
+        <section class="form-container" id="guest-list">
+            <div class="form-title-container">
+                <h2 class="form-title">Guest List </h2>
+                <p class="form-subtitle">100 places maximum</p>
+            </div>
             <div class="form-img-container"data-tilt data-tilt-glare="true" data-tilt-max-glare="0.1" data-tilt-speed="3200" data-tilt-max="4" data-tilt-gyroscope="true">
                 <img src="./assets/img/dnb_takeover.jpeg" alt="Affiche de la soirée DNB Takeover à Globull" class="form-img">
             </div>
-            <p class="form-subtitle">Inscription gratuite</p>
-            <!-- <p class="form-subtitle">Place restante: ≃ 53</p> -->
+            <p class="form-subtitle" id="form-place-restantes">Places gratuites restantes ≃ ...</p>
+            
             <form id="form">
                 <input type="text" name="firstname" id="firstname" placeholder="Prénom" required>
                 <input type="text" name="lastname" id="lastname" placeholder="Nom" required>
                 <input type="email" name="email" id="email" placeholder="Email" required>
-                <button type="submit" class="button">Submit</button>
+                <button type="submit" class="button">Inscription</button>
             </form>
             <p id="response-message"></p> <!-- Message de confirmation -->
         </section>
@@ -126,7 +123,8 @@
 
             <div class="soundcloud-container">
                 <p>Dernière sortie de Azaph</p>
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4lsfLLrelXuvjlCL9dy8Rh?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7vo2jSGtU7jFXTmJRcXRYu?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                https://open.spotify.com/intl-fr/track/7vo2jSGtU7jFXTmJRcXRYu?si=f2065baa7c954e65
             </div>
 
             <div class="artist">
@@ -220,7 +218,7 @@
 
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
-        <script src="./index.js?v=2.1.3"></script>
+        <script src="./index.js?v=2.1.5"></script>
         <script src="https://thbo.ch/credits.js"></script>
         <script src="
         https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js
@@ -259,7 +257,7 @@
                 });
 
                 if (response.ok) {
-                    document.getElementById("response-message").innerText = "Formulaire envoyé avec succès ! \n\n Merci pour votre intérêt, vous devriez recevoir un email avec votre entrée d'ici 5 minutes maximum.\n\n Dans le cas contraire, contactez-nous contact@drumnbass.ch rapidement.";
+                    document.getElementById("response-message").innerText = "Formulaire envoyé avec succès !\n\nMerci pour ton intérêt ! On a un nombre de places limité, donc on fera de notre mieux pour te réserver une invitation.\n\nSi tu es sélectionné(e), tu recevras un email avec ton invitation. Penses à vérifier tes indésirables.\n\nCe processus peut prendre jusqu’à 24h, un peu de patience !\n\nÀ très vite !";
                     this.setAttribute("data-sent", "true");
                 } else {
                     document.getElementById("response-message").innerText = "Erreur lors de l'envoi.";
@@ -271,6 +269,15 @@
             }
         });
 
+    </script>
+
+    <script>
+        //Contacter l'API https://n8n.thbo.synology.me/webhook/2f74789c-a392-4e23-8082-1386a81644be et remplacer #form-place-restantes par le nombre de places restantes qui sera retourné par l'api tel que: {"remainingInvitations":67}
+        fetch("https://n8n.thbo.synology.me/webhook/2f74789c-a392-4e23-8082-1386a81644be")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("form-place-restantes").innerText = `Places gratuites restantes ≃ ${data.remainingInvitations}`;
+            });
     </script>
           
 
