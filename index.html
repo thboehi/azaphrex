@@ -69,7 +69,7 @@
             <img class="banner-ytb-single" id="banner-ytb-single" src="./assets/img/black_statues_single.png" alt="Bannière youtube pour le prochain EP.">
         </section>
 
-        <section class="form-container" id="guest-list">
+        <!-- <section class="form-container" id="guest-list">
             <div class="form-title-container">
                 <h2 class="form-title">Guest List </h2>
                 <p class="form-subtitle">100 places maximum</p>
@@ -77,7 +77,7 @@
             <div class="form-img-container"data-tilt data-tilt-glare="true" data-tilt-max-glare="0.1" data-tilt-speed="3200" data-tilt-max="4" data-tilt-gyroscope="true">
                 <img src="./assets/img/dnb_takeover.jpeg" alt="Affiche de la soirée DNB Takeover à Globull" class="form-img">
             </div>
-            <p class="form-subtitle" id="form-place-restantes">Places gratuites restantes ≃ ...</p>
+            <p class="form-subtitle" id="form-place-restantes">Soirée terminée, merci pour votre participation, les photos arrivent prochainement.</p>
             
             <form id="form">
                 <input type="text" name="firstname" id="firstname" placeholder="Prénom" required>
@@ -85,8 +85,8 @@
                 <input type="email" name="email" id="email" placeholder="Email" required>
                 <button type="submit" class="button">Inscription</button>
             </form>
-            <p id="response-message"></p> <!-- Message de confirmation -->
-        </section>
+            <p id="response-message"></p>
+        </section> -->
 
         <section class="artists-container">
 
@@ -223,62 +223,6 @@
         <script src="
         https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js
         "></script>
-        <!-- <script>
-            (function(d,t) {
-              var BASE_URL="https://chatwoot.thbo.synology.me";
-              var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-              g.src=BASE_URL+"/packs/js/sdk.js";
-              g.defer = true;
-              g.async = true;
-              s.parentNode.insertBefore(g,s);
-              g.onload=function(){
-                window.chatwootSDK.run({
-                  websiteToken: 'NUt2NyUgpHPsEVjjML3Zw46s',
-                  baseUrl: BASE_URL
-                })
-              }
-            })(document,"script");
-          </script> -->
-
-    <script>
-        const formLink = "https://n8n.thbo.synology.me/webhook/b3c2277a-4265-4082-a8dc-55656fa6be6c";
-
-        document.getElementById("form").addEventListener("submit", async function(event) {
-            event.preventDefault(); // Empêche la redirection
-
-            const formData = new FormData(this);
-            const submitButton = this.querySelector("button[type='submit']");
-            submitButton.disabled = true;
-
-            try {
-                const response = await fetch(formLink, {
-                    method: "POST",
-                    body: formData
-                });
-
-                if (response.ok) {
-                    document.getElementById("response-message").innerText = "Formulaire envoyé avec succès !\n\nMerci pour ton intérêt ! On a un nombre de places limité, donc on fera de notre mieux pour te réserver une invitation.\n\nSi tu es sélectionné(e), tu recevras un email avec ton invitation. Penses à vérifier tes indésirables.\n\nCe processus peut prendre jusqu’à 24h, un peu de patience !\n\nÀ très vite !";
-                    this.setAttribute("data-sent", "true");
-                } else {
-                    document.getElementById("response-message").innerText = "Erreur lors de l'envoi.";
-                    submitButton.disabled = false;
-                }
-            } catch (error) {
-                document.getElementById("response-message").innerText = "Une erreur s'est produite.";
-                submitButton.disabled = false;
-            }
-        });
-
-    </script>
-
-    <script>
-        //Contacter l'API https://n8n.thbo.synology.me/webhook/2f74789c-a392-4e23-8082-1386a81644be et remplacer #form-place-restantes par le nombre de places restantes qui sera retourné par l'api tel que: {"remainingInvitations":67}
-        fetch("https://n8n.thbo.synology.me/webhook/2f74789c-a392-4e23-8082-1386a81644be")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("form-place-restantes").innerText = `Places gratuites restantes ≃ ${data.remainingInvitations}`;
-            });
-    </script>
           
 
     </body>
