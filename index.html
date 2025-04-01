@@ -217,14 +217,14 @@
         </section>
 
 
-        <script src="https://unpkg.com/@popperjs/core@2"></script>
-        <script src="https://unpkg.com/tippy.js@6"></script>
-        <script src="./index.js?v=2.1.5"></script>
-        <script src="https://thbo.ch/credits.js"></script>
+        <script src="https://unpkg.com/@popperjs/core@2" async></script>
+        <script src="https://unpkg.com/tippy.js@6" async></script>
+        <script src="./index.js?v=2.1.5" async></script>
+        <script src="https://thbo.ch/credits.js" async></script>
         <script src="
         https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js
         "></script>
-        <script>
+        <script async>
             //Contacter l'API https://n8n.thbo.synology.me/webhook/2f74789c-a392-4e23-8082-1386a81644be et remplacer #form-place-restantes par le nombre de places restantes qui sera retourné par l'api tel que: {"remainingInvitations":67}
             fetch("https://n8n.ext4.ch/webhook/2f74789c-a392-4e23-8082-1386a81644be")
                 .then(response => response.json())
@@ -233,7 +233,7 @@
                 });
         </script>
 
-        <script>
+        <script async>
             const formLink = "https://n8n.ext4.ch/webhook/b3c2277a-4265-4082-a8dc-55656fa6be6c";
             document.getElementById("form").addEventListener("submit", async function(event) {
                 event.preventDefault(); // Empêche la redirection
