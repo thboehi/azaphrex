@@ -69,15 +69,15 @@
             <img class="banner-ytb-single" id="banner-ytb-single" src="./assets/img/black_statues_single.png" alt="Bannière youtube pour le prochain EP.">
         </section>
 
-        <!-- <section class="form-container" id="guest-list">
+        <section class="form-container" id="guest-list">
             <div class="form-title-container">
-                <h2 class="form-title">Guest List </h2>
-                <p class="form-subtitle">100 places maximum</p>
+                <h2 class="form-title">Guest List</h2>
+                <p class="form-subtitle">80 places maximum</p>
             </div>
             <div class="form-img-container"data-tilt data-tilt-glare="true" data-tilt-max-glare="0.1" data-tilt-speed="3200" data-tilt-max="4" data-tilt-gyroscope="true">
-                <img src="./assets/img/dnb_takeover.jpeg" alt="Affiche de la soirée DNB Takeover à Globull" class="form-img">
+                <img src="./assets/img/dnb_takeover2.jpg" alt="Affiche de la soirée DNB Takeover 2.0 à Globull" class="form-img">
             </div>
-            <p class="form-subtitle" id="form-place-restantes">Soirée terminée, merci pour votre participation, les photos arrivent prochainement.</p>
+            <p class="form-subtitle" id="form-place-restantes">...</p>
             
             <form id="form">
                 <input type="text" name="firstname" id="firstname" placeholder="Prénom" required>
@@ -86,7 +86,7 @@
                 <button type="submit" class="button">Inscription</button>
             </form>
             <p id="response-message"></p>
-        </section> -->
+        </section>
 
         <section class="artists-container">
 
@@ -216,6 +216,7 @@
             <audio src="./assets/sounds/stab.mp3"></audio>
         </section>
 
+
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
         <script src="./index.js?v=2.1.5"></script>
@@ -223,6 +224,48 @@
         <script src="
         https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js
         "></script>
+        <script>
+            //Contacter l'API https://n8n.thbo.synology.me/webhook/2f74789c-a392-4e23-8082-1386a81644be et remplacer #form-place-restantes par le nombre de places restantes qui sera retourné par l'api tel que: {"remainingInvitations":67}
+            fetch("https://n8n.ext4.ch/webhook/2f74789c-a392-4e23-8082-1386a81644be")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("form-place-restantes").innerText = `Places restantes = ${data.value}`;
+                });
+        </script>
+
+        <script>
+            const formLink = "https://n8n.ext4.ch/webhook/b3c2277a-4265-4082-a8dc-55656fa6be6c";
+            document.getElementById("form").addEventListener("submit", async function(event) {
+                event.preventDefault(); // Empêche la redirection
+                const formData = new FormData(this);
+                const submitButton = this.querySelector("button[type='submit']");
+                submitButton.disabled = true;
+                try {
+                    const response = await fetch(formLink, {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        document.getElementById("response-message").innerText = data.message;
+                        this.setAttribute("data-sent", "true");
+                        fetch("https://n8n.ext4.ch/webhook/2f74789c-a392-4e23-8082-1386a81644be")
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById("form-place-restantes").innerText = `Places restantes = ${data.value}`;
+                        });
+                    } else {
+                        const data = await response.json();
+                        document.getElementById("response-message").innerText = data.message;
+                        submitButton.disabled = false;
+                    }
+                } catch (error) {
+                    document.getElementById("response-message").innerText = "Une erreur s'est produite.";
+                    submitButton.disabled = false;
+                }
+            });
+        </script>
           
 
     </body>
