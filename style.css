@@ -15,6 +15,13 @@
     --orange-darker: #cc2b00;
 }
 
+/* Change selection to have background orange and text in black */
+::selection {
+    background: var(--orange);
+    color: black;
+}
+
+
 /* Change the white to any color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
@@ -457,7 +464,7 @@ strong{
     align-items: center;
     justify-content: center;
     gap: 10px;
-    opacity: 0.5;
+    opacity: 0.2;
     transition: opacity 300ms ease-in-out;
 }
 
@@ -466,6 +473,8 @@ strong{
 }
 .credits-container > p{
     font-size: 0.7rem;
+    display: flex;
+    gap: 4px;
 }
 
 .newsletter-title{
