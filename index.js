@@ -10,17 +10,20 @@ let iframe = document.getElementById("ytb-iframe")
 let urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams);
 let invitedBy = urlParams.get('by');
-logo.log(invitedBy);
+console.log(invitedBy);
 if (invitedBy) {
-    log
     localStorage.setItem('invitedBy', invitedBy);
-    let form = document.getElementById("invited-by")
+    let form = document.getElementById("invitedby")
     form.value = invitedBy
+    form.setAttribute("readonly", "readonly")
+    //Retirer tous les paramètres dans l'url
+    let newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    window.history.replaceState({ path: newUrl }, '', newUrl);
 }
 //Check si il y a un paramètre "invitedBy" dans le localStorage et si oui, remplacer dans le formulaire la valeur de "invitedBy" par la valeur de "invitedBy" dans le localStorage
 let invitedByLocalStorage = localStorage.getItem('invitedBy');
 if (invitedByLocalStorage) {
-    let form = document.getElementById("invited-by")
+    let form = document.getElementById("invitedby")
     form.value = invitedByLocalStorage
 }
 
