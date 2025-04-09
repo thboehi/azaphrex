@@ -6,6 +6,24 @@ let particles = document.getElementById("artists-long-particles")
 let stab_head = document.getElementById("banner-ytb-single")
 let iframe = document.getElementById("ytb-iframe")
 
+// Check s'il y a un paramètre "by" dans l'URL et si oui, le mettre dans localstorage sous "invitedBy" et remplacer la valeur de "invitedBy" dans le formulaire par la valeur de "by"
+let urlParams = new URLSearchParams(window.location.search);
+console.log(urlParams);
+let invitedBy = urlParams.get('by');
+logo.log(invitedBy);
+if (invitedBy) {
+    log
+    localStorage.setItem('invitedBy', invitedBy);
+    let form = document.getElementById("invited-by")
+    form.value = invitedBy
+}
+//Check si il y a un paramètre "invitedBy" dans le localStorage et si oui, remplacer dans le formulaire la valeur de "invitedBy" par la valeur de "invitedBy" dans le localStorage
+let invitedByLocalStorage = localStorage.getItem('invitedBy');
+if (invitedByLocalStorage) {
+    let form = document.getElementById("invited-by")
+    form.value = invitedByLocalStorage
+}
+
 
 window.addEventListener('scroll', () => {
     let value = window.scrollY
